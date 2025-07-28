@@ -540,6 +540,11 @@ export class ShaderMount {
 
     this.uniformLocations = {};
 
+    // Remove the canvas element from the DOM
+    if (this.canvasElement && this.canvasElement.parentNode) {
+      this.canvasElement.parentNode.removeChild(this.canvasElement);
+    }
+
     // Remove the shader mount from the div wrapper element to avoid any GC issues
     this.parentElement.paperShaderMount = undefined;
   };

@@ -134,7 +134,7 @@ export const ShaderMount: React.FC<ShaderMountProps> = forwardRef<PaperShaderEle
       shaderMountRef.current?.dispose();
       shaderMountRef.current = null;
     };
-  }, [fragmentShader, webGlContextAttributes, frame, maxPixelCount, minPixelRatio, speed, uniformsProp, quality]);
+  }, [fragmentShader, webGlContextAttributes, frame, maxPixelCount, minPixelRatio, speed, quality]);
 
   // Uniforms
   useEffect(() => {

@@ -43,8 +43,16 @@ export default async function RootLayout({
 
   const cookieStore = await cookies();
   const { theme } = getTheme({ cookies: cookieStore });
+  console.log(theme);
+
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${theme} antialiased`}
+      style={{
+        colorScheme: theme === 'dark' ? 'dark' : 'light',
+      }}
+    >
       <body>
         <div style={{ display: 'contents', height: '100%' }}>
           {children}
