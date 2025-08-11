@@ -26,7 +26,7 @@ export default function GooglLogin() {
   }, [session]);
 
   return (
-    <div className="flex items-center justify-center fixed inset-0">
+    <div className="flex items-center justify-center fixed inset-0 bg-brand-magenta-primary text-affirmative-primary-foreground">
       <div className="text-center flex flex-col justify-center items-center">
         <Spinner className="size-8" />
         <p className="text-center mt-4">Success</p>

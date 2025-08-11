@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Gradient } from './gradient';
 import { Header } from '@/components/homepage/header';
 import { AndroidIcon } from '@/components/ui/icons';
@@ -22,7 +21,7 @@ export default async function Home() {
         </figure>
 
         <div className="flex items-center gap-4 max-md:flex-col mt-12 mx-auto">
-          <Button className="rounded-none max-md:w-full justify-start bg-[#34A853] text-black cursor-not-allowed">
+          <Button className="rounded-none max-md:w-full justify-start bg-[#34A853] hover:bg-[#34A853]/80 dark:bg-[#1E93FF] dark:hover:bg-[#1E93FF]/80 text-black cursor-not-allowed">
             <AndroidIcon />
             Download for Android
           </Button>
