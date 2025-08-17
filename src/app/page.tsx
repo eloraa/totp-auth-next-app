@@ -6,6 +6,7 @@ import { GlobeIcon } from 'lucide-react';
 import { LogoIcon } from '@/components/ui/logo';
 import { getTheme } from '@/lib/server/theme';
 import { cookies } from 'next/headers';
+import Link from 'next/link';
 
 export default async function Home() {
   const { theme } = getTheme({ cookies: await cookies() });
@@ -25,9 +26,11 @@ export default async function Home() {
             <AndroidIcon />
             Download for Android
           </Button>
-          <Button className="rounded-none max-md:w-full justify-start">
-            <GlobeIcon />
-            Open in browser
+          <Button className="rounded-none max-md:w-full justify-start" asChild>
+            <Link href="/dashboard">
+              <GlobeIcon />
+              Open in browser
+            </Link>
           </Button>
         </div>
       </div>

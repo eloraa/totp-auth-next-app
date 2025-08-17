@@ -1,5 +1,5 @@
 import { MeshGradient } from '@/components/shaders/mesh-gradient';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import { Signin } from './signin';
 
 export const metadata: Metadata = {

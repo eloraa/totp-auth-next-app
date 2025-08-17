@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, forwardRef, useState } from 'react';
-import { PaperShaderElement, ShaderMotionParams, ShaderMountUniforms, ShaderMount as ShaderMountVanilla } from '@/lib/shaders/shader-mount';
+import { type PaperShaderElement, type ShaderMotionParams, type ShaderMountUniforms, ShaderMount as ShaderMountVanilla } from '@/lib/shaders/shader-mount';
 import { useMergeRefs } from '@/lib/shaders/user-merge-ref';
 
 /**

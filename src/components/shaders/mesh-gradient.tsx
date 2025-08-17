@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { ShaderPreset } from '@/lib/shaders/shader-mount';
+import { type ShaderPreset } from '@/lib/shaders/shader-mount';
 import { defaultObjectSizing, getShaderColorFromString } from '@/lib/shaders';
-import { ShaderComponentProps, ShaderMount } from './shader-mount';
-import { meshGradientFragmentShader, MeshGradientParams, MeshGradientUniforms } from '@/lib/shaders/mesh-gradient';
+import { type ShaderComponentProps, ShaderMount } from './shader-mount';
+import { meshGradientFragmentShader, type MeshGradientParams, type MeshGradientUniforms } from '@/lib/shaders/mesh-gradient';
 import { ShaderFitOptions } from '@/lib/shaders/shader-sizing';
 import { colorPropsAreEqual } from '@/lib/shaders/utils';
 

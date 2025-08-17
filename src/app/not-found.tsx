@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: '404 | Authenticator',
@@ -10,7 +10,7 @@ export default function NotFound() {
       <div className="text-8xl font-light">:(</div>
 
       <div className="my-10 text-xl font-light space-y-2 max-w-2xl leading-10">
-        <p>The page you're looking for is not found, which means it might have been moved, deleted, or the URL was entered incorrectly.</p>
+        <p>The page you&apos;re looking for is not found, which means it might have been moved, deleted, or the URL was entered incorrectly.</p>
       </div>
 
       <div className="font-light mb-20 text-xl">404 Not found</div>

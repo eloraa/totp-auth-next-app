@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { MeshGradient } from '@/components/shaders/mesh-gradient';
-import { Theme, useTheme } from '@/store/theme';
+import { type Theme, useTheme } from '@/store/theme';
 
 export const Gradient = ({ theme: initialTheme }: { theme: Theme }) => {
   const { theme, initialized } = useTheme();
