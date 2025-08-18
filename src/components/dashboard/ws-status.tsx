@@ -14,7 +14,7 @@ export const WSStatus = () => {
         icon: <Spinner className="size-3" />,
         text: 'Connecting...',
         color: 'text-[#3358d4]',
-        bgColor: 'bg-[#edf2fe]',
+        bgColor: 'bg-[#355ad426]',
       };
     }
 
@@ -23,7 +23,7 @@ export const WSStatus = () => {
         icon: <span className="size-2 rounded-full bg-current" />,
         text: 'Warm',
         color: 'text-[#2b9a66]',
-        bgColor: 'bg-[#e6f6eb]',
+        bgColor: 'bg-[#2c9b6726]',
       };
     }
 
@@ -31,7 +31,7 @@ export const WSStatus = () => {
       icon: <ServerCrashIcon className="size-3" />,
       text: 'Cold',
       color: 'text-[#dd4425]',
-      bgColor: 'bg-[#feebe7]',
+      bgColor: 'bg-[#dd442526]',
     };
   };
 
