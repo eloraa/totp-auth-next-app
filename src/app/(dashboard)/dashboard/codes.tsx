@@ -6,7 +6,7 @@ import { SquareAsteriskIcon, CheckIcon, CopyIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { CodesToolbar } from '@/components/dashboard/codes-toolbar';
-import { CodesTable } from '@/components/dashboard/codes-table';
+import { CodesTable } from '@/app/(dashboard)/dashboard/codes-table';
 import { CodeTimer } from '@/components/dashboard/code-timer';
 import { useWebSocket } from '@/lib/client/data/websocket';
 import { useWebSocketStore } from '@/store/websocket';
