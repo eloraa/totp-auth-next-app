@@ -12,7 +12,7 @@ export const WSStatus = () => {
     if (isConnecting) {
       return {
         icon: <Spinner className="size-3" />,
-        text: 'Connecting...',
+        text: 'Cold',
         color: 'text-[#3358d4]',
         bgColor: 'bg-[#355ad426]',
       };
@@ -29,7 +29,7 @@ export const WSStatus = () => {
 
     return {
       icon: <ServerCrashIcon className="size-3" />,
-      text: 'Cold',
+      text: 'Down',
       color: 'text-[#dd4425]',
       bgColor: 'bg-[#dd442526]',
     };
