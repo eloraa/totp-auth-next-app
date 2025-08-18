@@ -14,13 +14,6 @@ import { Spinner } from '@/components/ui/spinner';
 import { cn } from '@/lib/utils';
 import { WSStatus } from '@/components/dashboard/ws-status';
 
-interface Code {
-  code: string;
-  expires_at: string;
-  id: string;
-  name: string;
-}
-
 export const Codes = () => {
   const { data, refetch, isLoading } = useCode();
   const [copiedId, setCopiedId] = React.useState<string | null>(null);
@@ -34,7 +27,7 @@ export const Codes = () => {
 
     const checkAndRefetch = () => {
       const now = new Date();
-      const hasExpiredCode = data.some((code: Code) => new Date(code.expires_at) <= now);
+      const hasExpiredCode = data.some(code => new Date(code.expires_at) <= now);
 
       if (hasExpiredCode) {
         refetch();
@@ -44,7 +37,7 @@ export const Codes = () => {
     checkAndRefetch();
 
     const now = new Date();
-    const nextExpiry = Math.min(...data.map((code: Code) => new Date(code.expires_at).getTime()));
+    const nextExpiry = Math.min(...data.map(code => new Date(code.expires_at).getTime()));
     const timeUntilNextExpiry = Math.max(0, nextExpiry - now.getTime());
 
     const timeout = setTimeout(() => {
@@ -103,7 +96,7 @@ export const Codes = () => {
         <CodesTable data={data} copiedId={copiedId} onCopy={copyToClipboard} />
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {data.map((code: Code) => (
+          {data.map(code => (
             <div
               key={code.id}
               className={cn(

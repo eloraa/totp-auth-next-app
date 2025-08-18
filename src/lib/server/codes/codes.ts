@@ -3,7 +3,16 @@
 import { api } from '@/lib/api';
 import { cookies, headers } from 'next/headers';
 
-export const getCode = async (params?: { id?: string; name?: string }) => {
+export interface Code {
+  code: string;
+  expires_at: string;
+  id: string;
+  name: string;
+}
+
+export type CodeResponse = Code[] | null;
+
+export const getCode = async (params?: { id?: string; name?: string }): Promise<CodeResponse> => {
   const headerList = await headers();
 
   const headersObj: Record<string, string> = {};

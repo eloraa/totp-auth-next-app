@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { getCode } from '@/lib/server/codes/codes';
+import { getCode, type CodeResponse } from '@/lib/server/codes/codes';
 import { useWebSocketStore } from '@/store/websocket';
 
 export const useCode = (params?: { id?: string; name?: string }) => {
   const { isConnected } = useWebSocketStore();
   
-  return useQuery({
+  return useQuery<CodeResponse>({
     queryKey: ['code', params],
     queryFn: () => getCode(params),
     enabled: !isConnected,
