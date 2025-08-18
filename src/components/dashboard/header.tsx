@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Logo } from '../ui/logo';
 import { cn } from '@/lib/utils';
-import { ThemeSelector } from '../theme/theme-selector';
+import { ThemeSelector } from './theme-selector';
 import { Button } from '../ui/button';
 import { LogOutIcon } from 'lucide-react';
 
@@ -11,9 +11,9 @@ export const Header = ({ className }: { className?: string }) => {
       <Link href="/" className="pointer-events-auto">
         <Logo className="h-6 w-16" />
       </Link>
-      <div className="flex items-center gap-4">
-        <ThemeSelector className="pointer-events-auto bg-popover/20" />
-        <Button variant="ghost" className="cursor-pointer pointer-events-auto rounded-full" asChild>
+      <div className="flex items-center gap-2">
+        <ThemeSelector className="pointer-events-auto" />
+        <Button variant="ghost" className="cursor-pointer pointer-events-auto rounded-none size-7" asChild>
           <Link href="/signout">
             <span className="sr-only">Signout</span>
             <LogOutIcon />
