@@ -13,6 +13,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Spinner } from '@/components/ui/spinner';
 import { toast } from 'sonner';
 import { GoogleSignin } from '@/components/ui/google-signin';
+import { authClient } from '@/lib/client/auth/auth';
 
 const signInSchema = z.object({
   email: z.email({
@@ -33,25 +34,29 @@ export const Signin = () => {
   });
   const email = form.watch('email');
   const sendMagicLink = async (values: z.infer<typeof signInSchema>) => {
-    toast.info('Not implemented yet');
-    console.log(values);
-    // const { email } = values;
-    // try {
-    //   setLoading(true);
-    //   const data = await signIn('email', { email, redirect: false });
-    //   if (data) {
-    //     const { error, ok } = data;
-    //     if (ok) {
-    //       setIsSend(true);
-    //     }
-    //     if (error) {
-    //       throw new Error(error);
-    //     }
-    //   }
-    //   setLoading(false);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    const { email } = values;
+    try {
+      setLoading(true);
+      const { data, error } = await authClient.signIn.magicLink({
+        email,
+        callbackURL: '/dashboard',
+      });
+
+      if (error) {
+        toast.error(error.message || 'Failed to send magic link');
+        return;
+      }
+
+      if (data) {
+        setIsSend(true);
+        toast.success('Magic link sent! Check your email.');
+      }
+    } catch (error) {
+      console.error('Magic link error:', error);
+      toast.error('Failed to send magic link');
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -60,7 +65,7 @@ export const Signin = () => {
     }
   }, []);
   return (
-    <div className={cn('rounded-lg border border-transparent p-4 transition-colors w-full md:max-w-xs', isSend && 'border-border')}>
+    <div className={cn('rounded-lg border border-transparent p-4 transition-colors w-full md:max-w-xs', isSend && 'border-foreground/15')}>
       <div className="flex gap-8 overflow-hidden p-2">
         <div
           className={cn('w-full min-w-full space-y-2 pt-2 transition-transform', isEmail && '-translate-x-full')}
@@ -100,8 +105,8 @@ export const Signin = () => {
           }}
         >
           {isSend ? (
-            <div className="flex h-full w-full items-center justify-center overflow-hidden border-t">
-              <div className="flex h-full w-full items-center justify-center rounded-lg bg-background px-6 py-4">
+            <div className="flex h-full w-full items-center justify-center overflow-hidden">
+              <div className="flex h-full w-full items-center justify-center rounded-lg px-6 py-4">
                 <div>
                   <figure className="mx-auto h-10 w-10">
                     <svg viewBox="0 0 71 49" fill="none">
@@ -111,10 +116,10 @@ export const Signin = () => {
                       />
                     </svg>
                   </figure>
-                  <h1 className="mx-auto max-w-40 text-sm">We&apos;ve sent a magic link to your email</h1>
+                  <h1 className="mx-auto max-w-40 text-sm text-center">We&apos;ve sent a magic link to your email</h1>
 
                   <div className="pt-6">
-                    <div className="group flex items-center gap-2 rounded-md bg-[#131313] px-2 py-1 pl-3 font-mono text-sm text-[#3cdca6]">
+                    <div className="group flex items-center gap-2 rounded-md bg-tertiary px-2 py-1 pl-3 font-mono text-sm text-tertiary-foreground">
                       <p className="text-current transition-colors group-hover:text-white">{email}</p>
                       <div className="__undo_button_xfec3e flex w-0 items-center justify-start overflow-hidden transition-[width] max-md:w-auto group-hover:md:w-8">
                         <Button

@@ -1,4 +1,4 @@
-import { oneTapClient } from 'better-auth/client/plugins';
+import { oneTapClient, magicLinkClient } from 'better-auth/client/plugins';
 import { createAuthClient } from 'better-auth/react';
 export const authClient = createAuthClient({
   plugins: [
@@ -16,6 +16,7 @@ export const authClient = createAuthClient({
         maxAttempts: 1,
       },
     }),
+    magicLinkClient(),
   ],
 });
 
