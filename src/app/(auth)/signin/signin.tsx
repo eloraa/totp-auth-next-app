@@ -39,7 +39,8 @@ export const Signin = () => {
       setLoading(true);
       const { data, error } = await authClient.signIn.magicLink({
         email,
-        callbackURL: '/dashboard',
+        callbackURL: '/signin',
+
       });
 
       if (error) {

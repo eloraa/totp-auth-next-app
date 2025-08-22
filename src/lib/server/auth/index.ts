@@ -130,7 +130,7 @@ export const auth = betterAuth({
     oneTap(),
     magicLink({
       sendMagicLink: sendMagicLinkEmail,
-      expiresIn: 300,
+      expiresIn: 60 * 15,
     }),
   ],
 });
