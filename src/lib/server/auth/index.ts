@@ -123,7 +123,7 @@ export const auth = betterAuth({
     },
   },
 
-  trustedOrigins: ['localhost:3000', 'authenticator.tunn.cc'],
+  trustedOrigins: process.env.TRUSTED_ORIGINS ? process.env.TRUSTED_ORIGINS.split(',') : [],
 
   plugins: [
     nextCookies(),
