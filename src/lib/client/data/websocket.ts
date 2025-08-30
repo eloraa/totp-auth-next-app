@@ -117,15 +117,17 @@ export const useWebSocket = (params?: { id?: string; name?: string }) => {
 
     try {
       const tokens = await getToken();
-      const token = tokens._token?.value || tokens._secure_token?.value;
+      const token = tokens._secure_token?.value || tokens._token?.value;
 
       if (!token) {
         setConnecting(false);
         return;
       }
 
+      console.log(token);
+      
       const baseUrl = wsUrl.replace(/^wss?:\/\//, 'https://');
-      const loginUrl = `${baseUrl}/login?token=${encodeURIComponent(btoa(token))}`;
+      const loginUrl = `${baseUrl}/login?token=${encodeURIComponent(token)}`;
 
       const response = await fetch(loginUrl, { credentials: 'include' });
       const result = await response.json();
